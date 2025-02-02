@@ -35,19 +35,19 @@ class FormValidator {
   }
 
   _showInputError(inputElement, errorMessage) {
-    this._errorElementId = `#${inputElement.id}-error`;
-    this._errorElement = this._formEl.querySelector(this._errorElementId);
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = this._formEl.querySelector(errorElementId);
     inputElement.classList.add(this._inputErrorClass);
-    this._errorElement.textContent = errorMessage;
-    this._errorElement.classList.add(this._errorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
   }
 
   _hideInputError(inputElement) {
-    this._errorElementId = `#${inputElement.id}-error`;
-    this._errorElement = this._formEl.querySelector(this._errorElementId);
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = this._formEl.querySelector(errorElementId);
     inputElement.classList.remove(this._inputErrorClass);
-    this._errorElement.classList.remove(this._errorClass);
-    this._errorElement.textContent = "";
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = "";
   }
 
   _hasInvalidInput() {
@@ -77,9 +77,7 @@ class FormValidator {
   }
 
   resetValidation() {
-    this._inputList.forEach((input) =>
-      this._hideInputError(this._formEl, input)
-    );
+    this._inputList.forEach((input) => this._hideInputError(input));
 
     this._formEl.reset();
     this._toggleButtonState(this._buttonElement, this._inputList);
