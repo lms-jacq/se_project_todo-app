@@ -51,8 +51,10 @@ addTodoForm.addEventListener("submit", (evt) => {
 });
 
 initialTodos.forEach((item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+  const renderTodo = (item) => {
+    const todo = generateTodo(item);
+    todosList.append(todo);
+  };
 });
 
 // instantiate
