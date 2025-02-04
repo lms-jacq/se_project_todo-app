@@ -45,18 +45,18 @@ addTodoForm.addEventListener("submit", (evt) => {
 
   const id = uuidv4();
   const values = { name, date, id };
-  const renderTodo = (item) => {
-    const todo = generateTodo(item);
-    todosList.append(todo);
-  };
+  const todo = generateTodo(values);
+  todosList.append(todo);
   closeModal(addTodoPopup);
 });
 
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  todosList.append(todo);
+};
+
 initialTodos.forEach((item) => {
-  const renderTodo = (item) => {
-    const todo = generateTodo(item);
-    todosList.append(todo);
-  };
+  renderTodo(item);
 });
 
 // instantiate
