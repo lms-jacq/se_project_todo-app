@@ -19,8 +19,8 @@ const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (inputValues) => {},
-    const name = inputValues.names;
+  handleFormSubmit: (inputValues) => {
+    const name = inputValues.name;
     const dateInput = inputValues.date;
 
     const date = new Date(dateInput);
@@ -33,6 +33,7 @@ const addTodoPopup = new PopupWithForm({
     todoCounter.updateTotal(true);
     newTodoValidator.resetValidation();
     addTodoPopup.close();
+  },
 });
 
 addTodoPopup.setEventListeners();
@@ -46,7 +47,7 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
-  if(completed) {
+  if (completed) {
     todoCounter.updateCompleted(false);
   }
 }
@@ -79,8 +80,6 @@ const renderTodo = (item) => {
   section.addItem(todo);
 };
 
-
-
 // addTodoForm.addEventListener("submit", (evt) => {
 //   evt.preventDefault();
 //   const name = evt.target.name.value;
@@ -103,7 +102,7 @@ const renderTodo = (item) => {
 // Use addItem method instead of this
 
 const section = new Section({
-  items: initialTodos;
+  items: initialTodos,
   renderer: renderTodo,
   containerSelector: ".todos__list",
 });
