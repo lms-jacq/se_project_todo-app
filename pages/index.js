@@ -38,9 +38,9 @@ const addTodoPopup = new PopupWithForm({
 
 addTodoPopup.setEventListeners();
 
-const closeModal = (modal) => {
-  modal.classList.remove("popup_visible");
-};
+// const closeModal = (modal) => {
+//   modal.classList.remove("popup_visible");
+// };
 
 function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
@@ -50,6 +50,7 @@ function handleDelete(completed) {
   if (completed) {
     todoCounter.updateCompleted(false);
   }
+  todoCounter.updateTotal(false);
 }
 
 function handleAddTodo(completed) {
@@ -58,7 +59,13 @@ function handleAddTodo(completed) {
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
+  const todo = new Todo(
+    data,
+    "#todo-template",
+    handleCheck,
+    handleDelete,
+    handleAddTodo
+  );
   const todoElement = todo.getView();
   return todoElement;
 };
@@ -107,7 +114,7 @@ const section = new Section({
   containerSelector: ".todos__list",
 });
 
-section.rendererItems();
+section.renderItems();
 
 // instantiate
 
