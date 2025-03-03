@@ -47,15 +47,15 @@ function handleCheck(completed) {
 }
 
 function handleDelete(completed) {
+  todoCounter.updateTotal(false);
   if (completed) {
     todoCounter.updateCompleted(false);
   }
-  todoCounter.updateTotal(false);
 }
 
-function handleAddTodo(completed) {
-  todoCounter.updateTotal(false);
-}
+// function handleAddTodo(completed) {
+//   todoCounter.updateTotal(false);
+// }
 
 // The logic in this function should all be handled in the Todo class.
 const generateTodo = (data) => {
@@ -63,20 +63,20 @@ const generateTodo = (data) => {
     data,
     "#todo-template",
     handleCheck,
-    handleDelete,
-    handleAddTodo
+    handleDelete
+    // handleAddTodo
   );
   const todoElement = todo.getView();
   return todoElement;
 };
 
-function handleEscapeClose(evt) {
-  if (evt.key === "Escape") {
-    // find  the currently opened modal
-    // const openedModal = document.querySelector(".popup_visible");
-    // and close it
-  }
-}
+// function handleEscapeClose(evt) {
+//   if (evt.key === "Escape") {
+//     // find  the currently opened modal
+//     // const openedModal = document.querySelector(".popup_visible");
+//     // and close it
+//   }
+// }
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();

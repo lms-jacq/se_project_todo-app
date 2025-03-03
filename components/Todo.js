@@ -4,8 +4,8 @@ class Todo {
     this._templateElement = document.querySelector(selector);
     this._handleCheck = handleCheck;
     this._handleDelete = handleDelete;
+    this._completed = data.completed;
 
-    // this._completed = data.completed;
     // this._name = data.name;
     // this._date = data.date;
     // this._id = data.id;
@@ -16,17 +16,18 @@ class Todo {
 
   _setEventListeners() {
     this._todoDeleteBtn.addEventListener("click", () => {
-      this._data.completed = !this._data.completed;
-      this._handleTodoCompletion(this._data, this._data.completed);
+      this._todoElement.remove();
+      this._handleDelete(this._completed);
       // this._todoElement.remove();
       // this._handleDelete(this._completed);
       // this._remove();
     });
 
     this._todoCheckboxEl.addEventListener("change", () => {
-      this._todoElement.remove();
-      this._handleTodoDelete(this._data.completed);
-      // this._data.completed = !this._data.completed;
+      this._completed = !this._completed;
+      this._handleCheck(this._completed);
+
+      // this._completed = !this._completed;
       // this._toggleCompletion();
       // this._handleCheck(this._completed);
     });
@@ -36,7 +37,7 @@ class Todo {
     this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
     this._todoLabel = this._todoElement.querySelector(".todo__label");
 
-    this._todoCheckboxEl.checked = this._data.completed;
+    this._todoCheckboxEl.checked = this._completed;
     this._todoCheckboxEl.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
